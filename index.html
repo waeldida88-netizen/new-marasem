@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>منظومة بروتوكول ومراسم وزارة التضامن الاجتماعي</title>
+    
+    <!-- PWA Manifest & App Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1e293b" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- iOS Specific PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="مراسم التضامن" />
+    <link rel="apple-touch-icon" href="/ministry_logo.png" />
+    
+    <!-- Splash Screen configurations for iPhone -->
+    <link rel="apple-touch-startup-image" href="/ministry_logo.png" />
+
+    <style>
+      /* Smooth scrolling and prevent bounce behaviors for app-like feeling */
+      html, body {
+        overscroll-behavior-y: contain;
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+  </head>
+  <body class="bg-[#f8fafc] text-[#0f172a] antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker registered successfully:', reg.scope))
+            .catch(err => console.log('Service Worker registration failed:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
+
